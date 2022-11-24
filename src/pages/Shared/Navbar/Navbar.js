@@ -1,10 +1,12 @@
 import React from 'react';
 import { FaDollyFlatbed } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
     const menuList = <>
-        <li><a>Item 1</a></li>
+        <li><Link to='/'>Item 1</Link></li>
+        <li><Link to='/blog'>Blog</Link></li>
     </>
     return (
         <div>
@@ -18,7 +20,7 @@ const Navbar = () => {
                             {menuList}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl"> <FaDollyFlatbed /> <span className='ml-2'>SIS Buy-Sell</span></a>
+                    <Link to='/' className="btn btn-ghost normal-case text-xl"> <FaDollyFlatbed /> <span className='ml-2'>SIS Buy-Sell</span></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
@@ -26,7 +28,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Get started</a>
+                    <Link className="btn">Get started</Link>
                 </div>
             </div>
         </div>
