@@ -16,13 +16,13 @@ const CategoriesDetails = ({ cat }) => {
                     <p>Location {location} </p>
                     <p>Month of Use: {month_of_use} /month </p>
                     <p>Purchase Year: {purchase_year}</p>
-                    <p>Selling Price: {resale_price} </p>
-                    <p>Buying Price: {original_price} </p>
+                    <p>Selling Price: ${resale_price} </p>
+                    <p>Buying Price: ${original_price} </p>
                     <p>Seller Name: {seller_name} </p>
                     <p>Contact No: {mobile} </p>
                     <p>Post On: {post_time} </p>
                     <div className="card-actions">
-                        <button className="btn btn-primary">Buy Now</button>
+                        <button className="btn btn-primary">Book Now</button>
                     </div>
                 </div>
             </div>
