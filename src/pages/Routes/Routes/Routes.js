@@ -5,12 +5,14 @@ import Home from "../../Home/Home/Home";
 import Main from "../../Layout/Main";
 import Login from "../../Login/Login/Login";
 import Register from "../../Login/Register/Register";
+import ErrorRoutes from "../ErrorRoutes/ErrorRoutes";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 
 export const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <ErrorRoutes></ErrorRoutes>,
         children: [
             {
                 path: '/',
@@ -30,7 +32,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/categories/:name',
-                element: <Categories></Categories>,
+                element: <PrivateRoutes><Categories></Categories></PrivateRoutes>,
                 loader: ({ params }) => fetch(`http://localhost:5000/categories?category=${params.name}`)
             }
         ]
