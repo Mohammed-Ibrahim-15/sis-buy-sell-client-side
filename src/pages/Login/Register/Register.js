@@ -46,6 +46,15 @@ const Register = () => {
                         <input type="email" className="input input-bordered input-primary w-full max-w-xs"  {...register("email", { required: 'Email Address is required' })} placeholder="Write your email" />
                         {errors.email && <p role='alert' className='text-red-600'>*{errors.email?.message}</p>}
                     </div>
+                    <div>
+                        <label className="label">
+                            <span className="label-text">Role</span>
+                        </label>
+                        <select name='role' className="select select-primary w-full max-w-xs">
+                            <option>Buyer</option>
+                            <option>Seller</option>
+                        </select>
+                    </div>
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
                             <span className="label-text">Password</span>

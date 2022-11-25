@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import BookingModal from '../BookingModal/BookingModal';
 import CategoriesDetails from '../CategoryDetails/CategoriesDetails';
 
 const Categories = () => {
     const category = useLoaderData()
     // console.log(category)
+    const [booking, setBooking] = useState(null)
+
+
+
     return (
         <div className='max-w-screen-xl mx-auto'>
             <h1 className='text-center text-4xl font-bold mt-4'>All Phones</h1>
@@ -13,9 +18,17 @@ const Categories = () => {
                     category.map(cat => <CategoriesDetails
                         key={cat._id}
                         cat={cat}
+                        setBooking={setBooking}
                     ></CategoriesDetails>)
                 }
             </div>
+            {
+                booking &&
+                <BookingModal
+                    booking={booking}
+                    setBooking={setBooking}
+                ></BookingModal>
+            }
         </div>
     );
 };

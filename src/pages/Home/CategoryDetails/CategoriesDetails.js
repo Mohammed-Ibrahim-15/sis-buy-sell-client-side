@@ -1,8 +1,11 @@
 import React from 'react';
 
-const CategoriesDetails = ({ cat }) => {
+const CategoriesDetails = ({ cat, setBooking }) => {
     const { name, img, location, condition, description, mobile, month_of_use, original_price, purchase_year, resale_price, seller_name, post_time } = cat
+
     console.log(cat)
+
+
     return (
         <div>
             <div className="card w-96 bg-base-100 shadow-xl">
@@ -22,7 +25,7 @@ const CategoriesDetails = ({ cat }) => {
                     <p>Contact No: {mobile} </p>
                     <p>Post On: {post_time} </p>
                     <div className="card-actions">
-                        <button className="btn btn-primary">Book Now</button>
+                        <label onClick={() => setBooking(cat)} htmlFor="booking-modal" className="btn btn-primary">Book Now</label>
                     </div>
                 </div>
             </div>
