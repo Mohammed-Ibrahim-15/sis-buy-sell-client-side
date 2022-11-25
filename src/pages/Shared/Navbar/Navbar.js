@@ -1,12 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaDollyFlatbed } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Navbar = () => {
+    const { user, logout } = useContext(AuthContext)
+
+    const handleLogout = () => {
+        logout()
+            .then(() => { })
+            .catch(err => console.error(err))
+    }
+
 
     const menuList = <>
-        <li><Link to='/'>Item 1</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
+        {
+            user?.uid ?
+                <>
+                    <li><button onClick={handleLogout}>Logout</button>  </li>
+                    <li><span className='text-xm'>{user?.email}</span> </li>
+
+                </>
+                :
+                <li><Link to='/login'>Login</Link></li>
+
+        }
+
     </>
     return (
         <div>
