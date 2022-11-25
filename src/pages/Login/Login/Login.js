@@ -1,11 +1,16 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext)
+    const { signIn, googleSignIn } = useContext(AuthContext)
     const { register, formState: { errors }, handleSubmit } = useForm()
+    const location = useLocation()
+    const navigate = useNavigate()
+
+    const from = location.state?.from?.pathname || '/'
+
 
     const handleLogin = data => {
         console.log(data);
@@ -13,8 +18,20 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 console.log(user)
+                navigate(from, { replace: true })
             })
             .catch(err => console.error(err))
+    }
+
+    const handleGoogle = () => {
+        googleSignIn()
+            .then(result => {
+                const user = result.user
+                console.log(user)
+            })
+            .catch(err => {
+                console.error(err)
+            })
     }
 
     return (
@@ -47,7 +64,7 @@ const Login = () => {
                 </form>
                 <p>New user? <Link className='text-primary' to='/register'>Create an Account</Link> </p>
                 <div className="divider">OR</div>
-                <button className='btn btn-outline btn-accent w-full'>Google Login</button>
+                <button onClick={handleGoogle} className='btn btn-outline btn-accent w-full'>Google Login</button>
             </div>
         </div>
     );
