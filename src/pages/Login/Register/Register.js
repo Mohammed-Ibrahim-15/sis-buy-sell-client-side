@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Register = () => {
-
+    const { createUser } = useContext(AuthContext)
     const { register, formState: { errors }, handleSubmit } = useForm()
 
-    const handleLogin = data => {
+    const handleRegister = data => {
         console.log(data)
+        createUser(data.email, data.password)
+            .then(result => {
+                const user = result.user
+                console.log(user)
+            })
+            .catch(err => console.error(err))
     }
 
     return (
@@ -15,7 +22,7 @@ const Register = () => {
             <div className='border-4 border-sky-300 rounded-xl p-4 my-6'>
                 <h1 className='text-3xl text-center'>Register</h1>
 
-                <form onSubmit={handleSubmit(handleLogin)}>
+                <form onSubmit={handleSubmit(handleRegister)}>
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
