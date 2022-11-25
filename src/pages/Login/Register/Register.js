@@ -59,8 +59,6 @@ const Register = () => {
                     <input className='btn btn-primary w-full mt-4' value='Register' type="submit" />
                 </form>
                 <p>Already have an account? <Link className='text-primary' to='/login'>Please Login</Link> </p>
-                <div className="divider">OR</div>
-                <button className='btn btn-outline btn-accent w-full'>Google Login</button>
             </div>
         </div>
     );
