@@ -1,13 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import useToken from '../../../hooks/useToken';
 
 const Register = () => {
     const { createUser, updateUser } = useContext(AuthContext)
     const { register, formState: { errors }, handleSubmit } = useForm()
+
+    const [createdUserEmail, setCreatedUserEmail] = useState('')
+    const [token] = useToken(createdUserEmail)
     const navigate = useNavigate()
+
+    if (token) {
+        navigate('/');
+    }
+
 
     const handleRegister = (data) => {
         console.log(data)
@@ -39,10 +48,11 @@ const Register = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log('saveUserDB', data)
-                navigate('/');
+                setCreatedUserEmail(email)
+
             })
     }
+
 
 
     return (
