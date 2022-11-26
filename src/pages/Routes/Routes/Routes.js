@@ -9,6 +9,7 @@ import DashboardLayout from "../../Layout/DashboardLayout";
 import Main from "../../Layout/Main";
 import Login from "../../Login/Login/Login";
 import Register from "../../Login/Register/Register";
+import AdminRoute from "../AdminRoute/AdminRoute";
 import ErrorRoutes from "../ErrorRoutes/ErrorRoutes";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 
@@ -52,12 +53,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/allUsers',
-                element: <AllUsers></AllUsers>,
+                element: <AdminRoute><AllUsers></AllUsers></AdminRoute>,
 
             },
             {
                 path: '/dashboard/allSeller',
-                element: <AllSeller></AllSeller>,
+                element: <AdminRoute><AllSeller></AllSeller></AdminRoute>,
             },
         ]
     }

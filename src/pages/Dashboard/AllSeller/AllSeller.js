@@ -22,7 +22,7 @@ const AllSeller = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
-                            <th>Favorite Color</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,8 +32,8 @@ const AllSeller = () => {
                                     <th>{i + 1}</th>
                                     <td>{seller.name}</td>
                                     <td>{seller.email}</td>
-                                    <td>{seller.role}</td>
-                                    <td>Blue</td>
+                                    <td><button className='btn btn-xs btn-success'>{seller.role}</button></td>
+                                    <td><button className='btn btn-xs btn-error'>Delete</button></td>
                                 </tr>
                             )
                         }
