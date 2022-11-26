@@ -4,7 +4,7 @@ import { AuthContext } from '../../../contexts/AuthProvider';
 
 const BookingModal = ({ booking, setBooking }) => {
     const { user } = useContext(AuthContext)
-    const { name, resale_price } = booking
+    const { name, resale_price, img } = booking
 
     const handleBooking = event => {
         event.preventDefault();
@@ -20,14 +20,27 @@ const BookingModal = ({ booking, setBooking }) => {
             userName,
             userEmail,
             phoneName,
+            img,
             resalePrice,
             phone,
             location
         }
 
-        console.log(booking)
-        toast.success('Booking Confirm')
-        setBooking(null)
+        fetch('http://localhost:5000/bookings', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.acknowledged) {
+                    setBooking(null)
+                    toast.success('Booking Confirm')
+                }
+            })
     }
 
 

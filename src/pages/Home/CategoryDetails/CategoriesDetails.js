@@ -3,7 +3,7 @@ import React from 'react';
 const CategoriesDetails = ({ cat, setBooking }) => {
     const { name, img, location, condition, description, mobile, month_of_use, original_price, purchase_year, resale_price, seller_name, post_time } = cat
 
-    console.log(cat)
+    // console.log(cat)
 
 
     return (

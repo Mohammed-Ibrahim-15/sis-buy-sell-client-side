@@ -18,19 +18,20 @@ const Navbar = () => {
         {
             user?.uid ?
                 <>
+                    <li><Link to='/dashboard'>Dashboard</Link></li>
                     <li><button onClick={handleLogout}>Logout</button>  </li>
-                    <li><span className='text-xm'>{user?.email}</span> </li>
+                    <li><span className='text-xs italic'>{user?.email}</span> </li>
 
                 </>
                 :
-                <li><Link to='/login'>Login</Link></li>
+                <li><Link className='' to='/login'>Login</Link></li>
 
         }
 
     </>
     return (
         <div>
-            <div className="navbar bg-sky-300">
+            <div className="navbar bg-sky-300 flex justify-between">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -47,9 +48,7 @@ const Navbar = () => {
                         {menuList}
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <Link className="btn">Get started</Link>
-                </div>
+
             </div>
         </div>
     );

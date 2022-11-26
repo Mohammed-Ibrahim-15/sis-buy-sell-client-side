@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Register = () => {
     const { createUser, updateUser } = useContext(AuthContext)
     const { register, formState: { errors }, handleSubmit } = useForm()
+    const navigate = useNavigate()
 
     const handleRegister = (data) => {
         console.log(data)
@@ -19,7 +20,9 @@ const Register = () => {
                     displayName: data.name
                 }
                 updateUser(userInfo)
-                    .then(() => { })
+                    .then(() => {
+                        navigate('/')
+                    })
                     .catch(err => console.error(err))
             })
             .catch(err => console.error(err))
@@ -50,7 +53,7 @@ const Register = () => {
                         <label className="label">
                             <span className="label-text">Role</span>
                         </label>
-                        <select name='role' className="select select-primary w-full max-w-xs">
+                        <select {...register("role", { required: 'User role is required' })} name='role' className="select select-primary w-full max-w-xs">
                             <option>Buyer</option>
                             <option>Seller</option>
                         </select>
