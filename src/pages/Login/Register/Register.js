@@ -11,7 +11,7 @@ const Register = () => {
 
     const handleRegister = (data) => {
         console.log(data)
-        createUser(data.email, data.password)
+        createUser(data.email, data.password, data.role)
             .then(result => {
                 const user = result.user;
                 console.log(user);
@@ -21,12 +21,29 @@ const Register = () => {
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        navigate('/')
+                        saveUserDB(data.name, data.email, data.role);
                     })
                     .catch(err => console.error(err))
             })
             .catch(err => console.error(err))
     }
+
+    const saveUserDB = (name, email, role) => {
+        const user = { name, email, role };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('saveUserDB', data)
+                navigate('/');
+            })
+    }
+
 
     return (
         <div className='h-[500px] flex justify-center items-center'>

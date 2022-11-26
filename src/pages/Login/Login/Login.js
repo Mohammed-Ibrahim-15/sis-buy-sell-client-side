@@ -28,10 +28,27 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 console.log(user)
-                navigate(from, { replace: true })
+                saveUserDB(user.displayName, user.email, 'Buyer');
+
             })
             .catch(err => {
                 console.error(err)
+            })
+    }
+
+    const saveUserDB = (name, email, role) => {
+        const user = { name, email, role };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('saveUserDB', data)
+                navigate(from, { replace: true })
             })
     }
 
