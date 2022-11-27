@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const AddProduct = () => {
+    const { user } = useContext(AuthContext)
+
     const { register, formState: { errors }, handleSubmit } = useForm()
     const imageHostKey = process.env.REACT_APP_imgbb_key;
+    const navigate = useNavigate()
 
 
     const handleAddProduct = (data) => {
@@ -50,6 +55,7 @@ const AddProduct = () => {
                             console.log(data)
                             if (data.acknowledged) {
                                 toast.success('Product Added Successfully')
+                                navigate('/dashboard/myProduct')
                             }
                         })
                 }
@@ -70,7 +76,7 @@ const AddProduct = () => {
                             <label className="label">
                                 <span className="label-text">Seller Name</span>
                             </label>
-                            <input type="text" className="input input-bordered input-primary w-full max-w-lg"  {...register("seller_name", { required: 'Seller Name is required' })} placeholder="Write seller name" />
+                            <input type="text" defaultValue={user?.displayName} disabled className="input input-bordered input-primary w-full max-w-lg"  {...register("seller_name", { required: 'Seller Name is required' })} placeholder="Write seller name" />
                             {errors.seller_name && <p role='alert' className='text-red-600'>*{errors.seller_name?.message}</p>}
                         </div>
                         <div className="form-control w-full max-w-xs">
