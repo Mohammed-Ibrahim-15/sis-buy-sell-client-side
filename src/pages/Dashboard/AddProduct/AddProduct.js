@@ -28,7 +28,7 @@ const AddProduct = () => {
                     // console.log(imgData.data.url)
 
                     const product = {
-                        seller_name: data.seller_name,
+                        seller_name: user.displayName,
                         mobile: data.mobile,
                         name: data.name,
                         category: data.category,
@@ -76,7 +76,7 @@ const AddProduct = () => {
                             <label className="label">
                                 <span className="label-text">Seller Name</span>
                             </label>
-                            <input type="text" defaultValue={user?.displayName} disabled className="input input-bordered input-primary w-full max-w-lg"  {...register("seller_name", { required: 'Seller Name is required' })} placeholder="Write seller name" />
+                            <input type="text" defaultValue={user?.displayName} disabled className="input input-bordered input-primary w-full max-w-lg"  {...register("seller_name")} placeholder="Write seller name" />
                             {errors.seller_name && <p role='alert' className='text-red-600'>*{errors.seller_name?.message}</p>}
                         </div>
                         <div className="form-control w-full max-w-xs">
