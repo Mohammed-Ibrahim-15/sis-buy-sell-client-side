@@ -57,7 +57,7 @@ const Register = () => {
 
     return (
         <div className='h-[500px] flex justify-center items-center'>
-            <div className='border-4 border-sky-300 rounded-xl p-4 my-6'>
+            <div className='bg bg-base-200 shadow-2xl border-2 border-sky-300 rounded-xl px-8'>
                 <h1 className='text-3xl text-center'>Register</h1>
 
                 <form onSubmit={handleSubmit(handleRegister)}>
@@ -97,7 +97,7 @@ const Register = () => {
 
                     <input className='btn btn-primary w-full mt-4' value='Register' type="submit" />
                 </form>
-                <p>Already have an account? <Link className='text-primary' to='/login'>Please Login</Link> </p>
+                <p className='my-2'>Already have an account? <Link className='text-primary' to='/login'>Please Login</Link> </p>
             </div>
         </div>
     );
