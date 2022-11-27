@@ -11,15 +11,15 @@ const AllUsers = () => {
         }
     });
 
-    const handleAdmin = id => {
-        fetch(`http://localhost:5000/users/admin/${id}`, {
-            method: 'PUT',
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-            })
-    }
+    // const handleAdmin = id => {
+    //     fetch(`http://localhost:5000/users/admin/${id}`, {
+    //         method: 'PUT',
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data)
+    //         })
+    // }
 
     return (
         <div>
@@ -43,7 +43,7 @@ const AllUsers = () => {
                                     <th>{i + 1}</th>
                                     <td>{buyer.name}</td>
                                     <td>{buyer.email}</td>
-                                    <td><button onClick={() => handleAdmin(buyer._id)} className='btn btn-xs btn-success'>{buyer.role}</button></td>
+                                    <td><button className='btn btn-xs btn-success'>{buyer.role}</button></td>
                                     <td><button className='btn btn-xs btn-error'>Delete</button></td>
                                 </tr>
                             )
