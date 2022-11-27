@@ -22,7 +22,7 @@ const MyBooking = () => {
 
     return (
         <div>
-            <h1 className='text-3xl mb-6'>My Booking</h1>
+            <h1 className='text-3xl font-bold text-center my-3'>My Booking</h1>
             <div className="overflow-x-auto">
                 <table className="table w-full">
 
