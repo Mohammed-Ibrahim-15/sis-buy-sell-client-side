@@ -50,7 +50,10 @@ const MyBooking = () => {
                                     </td>
                                     <td>{booking?.phoneName}</td>
                                     <td>{booking?.resalePrice}</td>
-                                    <td>Pay</td>
+                                    <td>
+                                        <label className="btn btn-xs btn-warning px-3">PAY</label>
+
+                                    </td>
                                 </tr>
                             )
                         }
