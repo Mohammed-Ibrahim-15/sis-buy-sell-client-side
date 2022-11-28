@@ -43,7 +43,7 @@ const AddProduct = () => {
                     }
 
                     //    store to database
-                    fetch('http://localhost:5000/categories', {
+                    fetch('https://sis-buy-sell-server-side.vercel.app/categories', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

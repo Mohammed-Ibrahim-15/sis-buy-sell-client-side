@@ -39,7 +39,7 @@ const Register = () => {
 
     const saveUserDB = (name, email, role) => {
         const user = { name, email, role };
-        fetch('http://localhost:5000/users', {
+        fetch('https://sis-buy-sell-server-side.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

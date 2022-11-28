@@ -15,7 +15,7 @@ const MyProducts = () => {
 
     const { user } = useContext(AuthContext)
 
-    const url = `http://localhost:5000/categories?seller_name=${user.displayName}`;
+    const url = `https://sis-buy-sell-server-side.vercel.app/categories?seller_name=${user.displayName}`;
 
     const { data: products = [], refetch } = useQuery({
         queryKey: ['bookings', user?.email],
@@ -33,7 +33,7 @@ const MyProducts = () => {
 
 
     const handleDeleteProduct = (product) => {
-        fetch(`http://localhost:5000/categories/${product._id}`, {
+        fetch(`https://sis-buy-sell-server-side.vercel.app/categories/${product._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

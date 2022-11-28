@@ -15,14 +15,14 @@ const AllSeller = () => {
     const { data: sellers = [], refetch } = useQuery({
         queryKey: ['users', 'Seller'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users?role=Seller');
+            const res = await fetch('https://sis-buy-sell-server-side.vercel.app/users?role=Seller');
             const data = await res.json();
             return data;
         }
     });
 
     const handleDeleteSeller = (seller) => {
-        fetch(`http://localhost:5000/users/${seller._id}`, {
+        fetch(`https://sis-buy-sell-server-side.vercel.app/users/${seller._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

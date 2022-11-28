@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
             {
                 path: '/categories/:name',
                 element: <PrivateRoutes><Categories></Categories></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/categories?category=${params.name}`)
+                loader: ({ params }) => fetch(`https://sis-buy-sell-server-side.vercel.app/categories?category=${params.name}`)
             }
         ]
     },
