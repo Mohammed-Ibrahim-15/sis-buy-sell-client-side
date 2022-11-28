@@ -14,17 +14,17 @@ const Navbar = () => {
 
 
     const menuList = <>
-        <li><Link to='/blog'>Blog</Link></li>
+        <li className='font-bold'><Link to='/blog'>Blog</Link></li>
         {
             user?.uid ?
                 <>
-                    <li><Link to='/dashboard'>Dashboard</Link></li>
-                    <li><button onClick={handleLogout}>Logout</button>  </li>
-                    <li><span className='text-xs italic'>{user?.email}</span> </li>
+                    <li className='font-bold'><Link to='/dashboard'>Dashboard</Link></li>
+                    <li className='font-bold'><button onClick={handleLogout}>Logout</button>  </li>
+                    <li><span className='text-xs italic text-gray-500'>{user?.email}</span> </li>
 
                 </>
                 :
-                <li><Link className='' to='/login'>Login</Link></li>
+                <li className='font-bold'><Link className='' to='/login'>Login</Link></li>
 
         }
 
@@ -41,7 +41,7 @@ const Navbar = () => {
                             {menuList}
                         </ul>
                     </div>
-                    <Link to='/' className="btn btn-ghost normal-case text-xl"> <FaDollyFlatbed /> <span className='ml-2'>SIS Buy-Sell</span></Link>
+                    <Link to='/' className="btn btn-ghost normal-case text-xl"> <FaDollyFlatbed /> <span className='ml-2 font-bold'>SIS Buy-Sell</span></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
