@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import { useQuery } from '@tanstack/react-query'
+import toast from 'react-hot-toast';
 
 const MyBooking = () => {
     const { user } = useContext(AuthContext)
@@ -20,7 +21,12 @@ const MyBooking = () => {
         }
     })
 
+    const handlePay = () => {
+        toast.success('Payment Successful !!!')
+    }
+
     return (
+
         <div>
             <h1 className='text-3xl font-bold text-center my-3'>My Booking</h1>
             <div className="overflow-x-auto">
@@ -51,7 +57,7 @@ const MyBooking = () => {
                                     <td>{booking?.phoneName}</td>
                                     <td>{booking?.resalePrice}</td>
                                     <td>
-                                        <label className="btn btn-xs btn-warning px-3">PAY</label>
+                                        <label onClick={() => handlePay()} className="btn btn-xs btn-warning px-3">PAY</label>
 
                                     </td>
                                 </tr>
